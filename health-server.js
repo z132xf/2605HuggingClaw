@@ -22,12 +22,10 @@ const JUPYTER_HOST = "127.0.0.1";
 const JUPYTER_BASE = normalizeBase(process.env.JUPYTER_BASE, "/terminal");
 const GATEWAY_TOKEN = (process.env.GATEWAY_TOKEN || "").trim();
 const DEV_MODE_ENABLED = isTrue(process.env.DEV_MODE);
-// Jupyter enabled by default. Only disabled when explicitly set to false via
-// DEV_MODE=false or HUGGINGCLAW_JUPYTER_ENABLED=false.
-const JUPYTER_EXPLICITLY_DISABLED = /^(false|0|no|off)$/i.test(
-  String(process.env.HUGGINGCLAW_JUPYTER_ENABLED || process.env.DEV_MODE || "").trim()
-);
-const JUPYTER_ENABLED = !JUPYTER_EXPLICITLY_DISABLED;
+// Default true. Only false when DEV_MODE=false or HUGGINGCLAW_JUPYTER_ENABLED=false is explicitly set.
+const JUPYTER_ENABLED =
+  !/^(false|0|no|off)$/i.test(String(process.env.DEV_MODE || "").trim()) &&
+  !/^(false|0|no|off)$/i.test(String(process.env.HUGGINGCLAW_JUPYTER_ENABLED || "").trim());
 const startTime = Date.now();
 const LLM_MODEL = process.env.LLM_MODEL || "Not Set";
 const TELEGRAM_ENABLED = !!process.env.TELEGRAM_BOT_TOKEN;
