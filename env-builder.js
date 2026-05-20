@@ -1754,14 +1754,6 @@ const FIELDS = [
     "tag": "critical"
   },
 {
-    "g": "Telegram",
-    "icon": "✈️",
-    "k": "TELEGRAM_USER_IDS",
-    "lbl": "Telegram user IDs (comma)",
-    "type": "text",
-    "tag": "optional"
-  },
-{
     "g": "Deployment",
     "icon": "🧭",
     "k": "APP_BASE",
